@@ -30,6 +30,7 @@ public class ProducerService {
 
         String conversionDTO = (String) rabbitTemplate.convertSendAndReceive(RabbitMQConsts.EXCHANGE, RabbitMQConsts.RPC_QUEUE, requestDTO);
 
+        log.info("Salvando Cache - CURRENCY-QUOTATION::Redis");
         return this.objectMapper.readValue(conversionDTO, ConversionDTO.class);
     }
 }
