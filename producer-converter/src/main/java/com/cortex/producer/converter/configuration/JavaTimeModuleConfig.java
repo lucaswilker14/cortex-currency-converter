@@ -1,4 +1,4 @@
-package com.cortex.cotacaomoeda.configuration;
+package com.cortex.producer.converter.configuration;
 
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import org.springframework.context.annotation.Bean;
