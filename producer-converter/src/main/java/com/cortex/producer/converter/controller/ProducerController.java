@@ -26,7 +26,7 @@ public class ProducerController {
 
 
     @GetMapping("/conversao")
-    public ResponseEntity<String> currencyConversion(@RequestParam @Valid String dataCotacao,
+    public ResponseEntity<ConversionDTO> currencyConversion(@RequestParam @Valid String dataCotacao,
                                                             @RequestParam @Valid String moedaOrigem,
                                                             @RequestParam @Valid String moedaFinal,
                                                             @RequestParam @Valid Double valorDesejado) throws JsonProcessingException {
