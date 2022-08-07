@@ -8,6 +8,7 @@ import dto.RequestDTO;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 @Slf4j
@@ -23,6 +24,7 @@ public class ProducerService {
         this.objectMapper.findAndRegisterModules();
     }
 
+    @Cacheable(cacheNames = "currency_converter")
     public ConversionDTO sendMessageConversion(String dataCotacao, String moedaOrigem, String moedaFinal, Double valorDesejado) throws JsonProcessingException {
         RequestDTO requestDTO = new RequestDTO(dataCotacao, moedaOrigem, moedaFinal, valorDesejado);
 
