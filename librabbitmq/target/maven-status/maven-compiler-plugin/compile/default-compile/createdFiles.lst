@@ -1,0 +1,4 @@
+dto\ConversionDTO.class
+dto\RequestDTO.class
+dto\ResponseBcbDTO.class
+consts\RabbitMQConsts.class
