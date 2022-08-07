@@ -2,7 +2,7 @@ FROM openjdk:18-alpine
 
 MAINTAINER lucas
 
-ADD target/cortex-cotacao-moeda-*.jar /app.jar
+ADD target/producer-converter-*.jar /app.jar
 
 EXPOSE 8080 6379
 
