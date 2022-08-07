@@ -25,7 +25,7 @@ public class RabbitMQConfig {
     public Queue queue() {
         Map<String, Object> args = new HashMap<>();
         args.put("x-max-priority", 10);
-        return new Queue(RabbitMQConsts.RPC_QUEUE, true, false, false);
+        return new Queue(RabbitMQConsts.RPC_QUEUE, true, false, false, args);
     }
 
     /**
