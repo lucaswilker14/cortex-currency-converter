@@ -27,7 +27,7 @@ services:
 
   consumer-converter:
     build:
-      dockerfile: consumer.Dockerfile
+      dockerfile: dockerfiles/consumer.Dockerfile
     container_name: consumer-converter
     image: consumer-converter
     ports:
@@ -43,7 +43,7 @@ services:
 
   producer:
     build:
-      dockerfile: producer.Dockerfile
+      dockerfile: dockerfiles/producer.Dockerfile
     container_name: producer-converter
     image: producer-converter
     ports:

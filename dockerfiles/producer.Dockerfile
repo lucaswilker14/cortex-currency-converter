@@ -3,20 +3,20 @@ ENV HOME=/app
 RUN mkdir -p $HOME
 WORKDIR $HOME
 
-ADD pom.xml $HOME
-ADD librabbitmq/pom.xml $HOME/librabbitmq/pom.xml
-ADD producer-converter/pom.xml $HOME/producer-converter/pom.xml
-ADD consumer-converter/pom.xml $HOME/consumer-converter/pom.xml
+ADD ../pom.xml $HOME
+ADD ../librabbitmq/pom.xml $HOME/librabbitmq/pom.xml
+ADD ../producer-converter/pom.xml $HOME/producer-converter/pom.xml
+ADD ../consumer-converter/pom.xml $HOME/consumer-converter/pom.xml
 
 RUN mvn -pl librabbitmq verify --fail-never
-ADD librabbitmq $HOME/librabbitmq
+ADD ../librabbitmq $HOME/librabbitmq
 RUN mvn -pl librabbitmq install
 
 RUN mvn -pl producer-converter verify --fail-never
-ADD producer-converter $HOME/producer-converter
+ADD ../producer-converter $HOME/producer-converter
 
 RUN mvn -pl consumer-converter verify --fail-never
-ADD consumer-converter $HOME/consumer-converter
+ADD ../consumer-converter $HOME/consumer-converter
 
 RUN mvn -pl librabbitmq,producer-converter,consumer-converter clean package install
 
