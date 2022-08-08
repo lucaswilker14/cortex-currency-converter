@@ -1,5 +1,6 @@
 package com.cortex.producer.converter.configuration;
 
+import com.cortex.producer.converter.exceptions.ServerOfflineHandler;
 import consts.RabbitMQConsts;
 import org.springframework.amqp.core.TopicExchange;
 import org.springframework.amqp.rabbit.connection.ConnectionFactory;
@@ -55,6 +56,7 @@ public class RabbitMQConfig {
         container.setConnectionFactory(connectionFactory);
         container.setQueueNames(RabbitMQConsts.RPC_REPLY_CONVERSION_QUEUE);
         container.setMessageListener(rabbitTemplate(connectionFactory, messageConverter));
+        container.setErrorHandler(new ServerOfflineHandler());
         return container;
     }
 
