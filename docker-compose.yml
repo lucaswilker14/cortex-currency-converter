@@ -47,7 +47,7 @@ services:
     container_name: producer-converter
     image: producer-converter
     ports:
-      - "8080:8080"
+      - "8082:8082"
     depends_on:
       - consumer-converter
       - redis-cache
