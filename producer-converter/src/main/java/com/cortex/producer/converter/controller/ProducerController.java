@@ -26,12 +26,15 @@ public class ProducerController {
 
 
     @GetMapping("/conversao")
-    public ResponseEntity<ConversionDTO> currencyConversion(@RequestParam @Valid String dataCotacao,
+    public ResponseEntity<Object>currencyConversion(@RequestParam @Valid String dataCotacao,
                                                             @RequestParam @Valid String moedaOrigem,
                                                             @RequestParam @Valid String moedaFinal,
-                                                            @RequestParam @Valid Double valorDesejado) throws JsonProcessingException {
-
-        var conversionDTO = this.producerService.sendMessageConversion(dataCotacao, moedaOrigem, moedaFinal, valorDesejado);
-        return ResponseEntity.status(HttpStatus.OK).body(conversionDTO);
+                                                            @RequestParam @Valid Double valorDesejado) {
+        try {
+            var conversionDTO = this.producerService.sendMessageConversion(dataCotacao, moedaOrigem, moedaFinal, valorDesejado);
+            return ResponseEntity.status(HttpStatus.OK).body(conversionDTO);
+        }catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+        }
     }
 }
