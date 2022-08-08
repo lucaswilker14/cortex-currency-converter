@@ -26,7 +26,8 @@ services:
       - lwnet
 
   consumer-converter:
-    build: ./consumer-converter
+    build:
+      dockerfile: consumer.Dockerfile
     container_name: consumer-converter
     image: consumer-converter
     ports:
@@ -41,7 +42,8 @@ services:
       - lwnet
 
   producer:
-    build: ./producer-converter
+    build:
+      dockerfile: producer.Dockerfile
     container_name: producer-converter
     image: producer-converter
     ports:
