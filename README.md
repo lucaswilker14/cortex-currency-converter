@@ -76,3 +76,15 @@ curl -X GET "https://olinda.bcb.gov.br/olinda/servico/PTAX/versao/v1/odata/Moeda
 ```sh
 $ docker compose up
 ```
+
+#### Porta:
+
+```sh
+$ 8082
+```
+
+#### Endpoint:
+
+```sh
+$ curl GET -X http://localhost:8082/cotacaomoedacortex/conversao?dataCotacao=[data]&moedaOrigem=[moeda]&moedaFinal=[moeda]&valorDesejado=[valor]
+```
