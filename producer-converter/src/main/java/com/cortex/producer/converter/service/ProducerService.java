@@ -37,7 +37,7 @@ public class ProducerService {
             log.info("Salvando Cache - CURRENCY-QUOTATION::Redis");
             return this.objectMapper.readValue(conversionDTO, ConversionDTO.class);
         }catch (Exception e) {
-            throw new Exception("Servidor não conseguiu responder.");
+            throw new Exception("Servidor não conseguiu responder. " + e.getMessage());
         }
 
     }

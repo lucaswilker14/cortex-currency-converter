@@ -4,6 +4,7 @@ import dto.ConversionDTO;
 import dto.RequestDTO;
 import dto.ResponseBcbDTO;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.amqp.AmqpRejectAndDontRequeueException;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.http.HttpHeaders;
@@ -35,7 +36,7 @@ public class ConsumerService {
                 .build();
     }
 
-    public ConversionDTO convertCurrency(RequestDTO requestDTO) {
+    public ConversionDTO convertCurrency(RequestDTO requestDTO) throws Exception {
         Double finalCurrencyQuote   = getQuoteOfDay(requestDTO.getFinalCurrency(), requestDTO.getQuotationDate(), "Final");
         Double sourceCurrencyQuote  = getQuoteOfDay(requestDTO.getOriginCurrency(), requestDTO.getQuotationDate(), "Origem");
 
@@ -46,17 +47,22 @@ public class ConsumerService {
     }
 
 
-    private Double getQuoteOfDay(String typeCurrency, String quotationDate, String tipoMoeda) {
+    private Double getQuoteOfDay(String typeCurrency, String quotationDate, String tipoMoeda) throws Exception {
         String url = builderStringApiBCBURL(typeCurrency, quotationDate);
+
         var quotesOfDay = Objects.requireNonNull(webClient
                 .get()
                 .uri("/" + url)
                 .retrieve()
                 .bodyToFlux(ResponseBcbDTO.class).blockFirst()).getValue();
 
-        log.info("Informações recuperadas da API! Moeda: " + tipoMoeda);
+        if (quotesOfDay.size() == 0) {
+            throw new Exception("Dado Inválido");
+        }
 
-        return (Double) quotesOfDay.get(quotesOfDay.size()-1).get("cotacaoCompra"); //retornando o valor da moeda mais recente.
+        log.info("Informações recuperadas da API! Moeda: " + tipoMoeda);
+        return (Double) quotesOfDay.get(quotesOfDay.size()-1).get("cotacaoCompra"); //retornando o valor da moeda mais recente
+
     }
 
     private String builderStringApiBCBURL(String sourceCurrency, String quotationDate) {
