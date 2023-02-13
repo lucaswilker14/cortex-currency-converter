@@ -14,3 +14,9 @@ jobs:
     steps:
       - name: Testando Aplicação
         run: echo Actions via API deu bom!
+        
+      - name: Create file
+        run: |
+          echo First        > test.txt
+          echo Second Line >> test.txt
+          echo Third       >> test.txt
