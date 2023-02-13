@@ -13,7 +13,7 @@ jobs:
     
     steps:
       - name: Testando Aplicação
-      - env:
+        env:
           MSG: ${{ github.event.client_payload.msg }}
-      - run: echo $MSG
+        run: echo $MSG
         
