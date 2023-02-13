@@ -15,5 +15,5 @@ jobs:
       - name: Testando Aplicação
       - env:
           MSG: ${{ github.event.client_payload.msg }}
-        run: echo $MSG
+      - run: echo $MSG
         
