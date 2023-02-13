@@ -14,7 +14,6 @@ jobs:
     steps:
       - name: Testando Aplicação
       - env:
-          VAR: ${{ github.event.client_payload.varTest }}
           MSG: ${{ github.event.client_payload.msg }}
-        run: echo Actions via API deu bom! ; echo $VAR ; echo $MSG
+        run: echo Actions via API deu bom! ; echo $MSG
         
