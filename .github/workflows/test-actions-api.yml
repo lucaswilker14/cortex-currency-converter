@@ -16,5 +16,5 @@ jobs:
         env:
           ACTION: ${{ github.event.client_payload.action }}
           TENANT: ${{ github.event.client_payload.alias }}
-        run: echo $ACTION | echo $TENANT
+        run: echo $ACTION ; echo $TENANT
         
