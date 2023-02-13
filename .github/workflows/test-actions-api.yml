@@ -13,10 +13,8 @@ jobs:
     
     steps:
       - name: Testando Aplicação
-        run: echo Actions via API deu bom!
+      - env:
+          VAR: ${{ github.event.client_payload.varTest }}
+          MSG: ${{ github.event.client_payload.msg }}
+        run: echo Actions via API deu bom! | echo $VAR | echo $MSG
         
-      - name: Create file
-        run: |
-          echo First        > test.txt
-          echo Second Line >> test.txt
-          echo Third       >> test.txt
