@@ -1,8 +1,11 @@
 name: Test Get Actions GitHub API
 
 on:
+  workflow_dispatch:
+  
   repository_dispatch:
-    types: [on-demand-test]
+    types:
+      - webhook
 
 jobs:
   build:
