@@ -1,0 +1,13 @@
+name: Test Get Actions GitHub API
+
+on:
+  repository_dispatch:
+    types: [on-demand-test]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Testando Aplicação
+        run: echo Hello, world!
