@@ -16,6 +16,5 @@ jobs:
         env:
           ACTION: ${{ github.event.client_payload.action }}
           TENANT: ${{ github.event.client_payload.alias }}
-          VAR: ${{github.testando_var}}
-        run: echo $ACTION ; echo $TENANT ; echo $VAR
+        run: echo $ACTION ; echo $TENANT
         
