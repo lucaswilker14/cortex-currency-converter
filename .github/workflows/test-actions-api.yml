@@ -1,8 +1,6 @@
 name: Test Get Actions GitHub API
 
 on:
-  workflow_dispatch:
-  
   repository_dispatch:
     types:
       - test-actions-api
