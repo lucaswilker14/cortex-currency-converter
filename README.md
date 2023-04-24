@@ -71,18 +71,34 @@ curl -X GET "https://olinda.bcb.gov.br/olinda/servico/PTAX/versao/v1/odata/Moeda
 
 ### Rodar Aplicação:
 
+#### Kubernetes:
+- [Steps](https://github.com/lucaswilker14/k8s-currency-converter)
+---
+
+#### Docker:
+
 ```sh
 $ docker compose up
 ```
+---
 
-#### Porta:
+### Porta:
 
 ```sh
 $ 8082
 ```
 
-#### Endpoint:
+### Endpoint:
 
 ```sh
-$ curl GET -X http://localhost:8082/cotacaomoedacortex/conversao?dataCotacao=[data]&moedaOrigem=[moeda]&moedaFinal=[moeda]&valorDesejado=[valor]
+$ curl GET -X http://localhost:8082/cotacaomoedacortex/conversao?dataCotacao=[dataCotacao]&moedaOrigem=[moedaOrigem]
+&moedaFinal=[moedaFinal]&valorDesejado=[valorDesejado]
 ```
+
+---
+
+### Formatação dos Dados
+- dataCotacao: MM-DD-AAAA
+- moedaOrigem: USD [ exemplo ]
+- moedaFinal: EUR [ exemplo ]
+- valorDesejado: 100 [ inteiro ]
