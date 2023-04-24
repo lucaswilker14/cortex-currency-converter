@@ -20,7 +20,6 @@ ADD ../consumer-converter $HOME/consumer-converter
 
 RUN mvn -pl librabbitmq,producer-converter,consumer-converter clean package install
 
-
 FROM openjdk:18-alpine
 COPY --from=builder /app/consumer-converter/target/*.jar /app/consumer-converter.jar
 EXPOSE 8081 5672 15672

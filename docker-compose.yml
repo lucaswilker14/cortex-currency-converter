@@ -26,10 +26,8 @@ services:
       - lwnet
 
   consumer-converter:
-    build:
-      dockerfile: dockerfiles/consumer.Dockerfile
     container_name: consumer-converter
-    image: consumer-converter
+    image: lucaswilker14/currency-converter-consumer
     ports:
       - "8081:8081"
     depends_on:
@@ -42,10 +40,8 @@ services:
       - lwnet
 
   producer:
-    build:
-      dockerfile: dockerfiles/producer.Dockerfile
     container_name: producer-converter
-    image: producer-converter
+    image: lucaswilker14/currency-converter-producer
     ports:
       - "8082:8082"
     depends_on:
