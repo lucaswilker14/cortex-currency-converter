@@ -1,0 +1,19 @@
+name: Test Get Actions GitHub API
+
+on:
+  repository_dispatch:
+    types:
+      - test-actions-api
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Testando Aplicação
+        env:
+          ACTION: ${{ github.event.client_payload.action }}
+          TENANT: ${{ github.event.client_payload.alias }}
+          ORIGIN: ${{ github.event.client_payload.origin }}
+        run: echo $ACTION ; echo $TENANT ; echo origin
+        

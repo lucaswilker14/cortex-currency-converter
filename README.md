@@ -1,5 +1,3 @@
-# Cortex Recruiting - Lucas Wilker
-
 Backend Desenvolvido em **SPRING BOOT** juntamento com **REDIS** e **RABBITMQ**
 
 ### Algumas informações 
